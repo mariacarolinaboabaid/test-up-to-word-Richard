@@ -1,0 +1,17 @@
+<div class="container-all-numbers">
+    <% if (numbers.length === 0) { %>
+        <div class="container-number-item">
+            <p>
+                0
+            </p>
+        </div>
+        <% } else { %>
+            <% numbers.forEach(number=> { %>
+                <div class="container-number-item">
+                    <p>
+                        <%= number %>
+                    </p>
+                </div>
+            <% }); %>
+        <% } %>
+</div>

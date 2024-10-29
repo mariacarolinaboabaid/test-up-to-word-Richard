@@ -1,0 +1,29 @@
+<div class="container-quantity-input">
+    <div class="container-label-and-input">
+        <label for="quantityValue">Quantity</label>
+        <input type="text" id="quantityValue" placeholder="Type here" />
+    </div>
+    <div class="container-quantity-input-object">
+        OBJ 1
+    </div>
+</div>
+
+<script>
+    function emitValue() {
+        const input = document.getElementById('quantityValue');
+        const value = parseInt(input.value, 10); 
+        if (!isNaN(value) && value > 0) { 
+            const event = new CustomEvent('quantityChanged', { detail: value });
+            document.dispatchEvent(event); 
+        }
+        input.value = ''; 
+    }
+    document.getElementById('quantityValue').addEventListener('input', function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+    document.getElementById('quantityValue').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            emitValue(); 
+        }
+    });
+</script>
